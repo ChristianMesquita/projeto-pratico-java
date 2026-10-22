@@ -1,2 +1,2 @@
-# projeto-pratico-java.
-Projeto prático desenvolvido em Java para a disciplina de Práticas de Programação Orientada a Objetos, aplicando conceitos de POO.
+# Projeto Prática - PPOO
+Trabalho Prático em grupo para a disciplina GAC106 - EPráticas de Programação Orientada a Objetos no curso de Sistemas de Informação da Universidade Federal de Lavras (UFLA)
