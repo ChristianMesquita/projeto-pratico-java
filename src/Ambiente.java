@@ -31,12 +31,15 @@ public class Ambiente {
      * @param descricao A descricao do ambiente.
      */
     public Ambiente(String descricao) {
+        saidas = new HashMap<>();
         this.descricao = descricao;
     }
 
-    /*
-     * Vai percorrer o HashMap e so vai pegar as direções(norte, sul, leste, oeste)
-     * e depois vai concatenar na variavel saidasDisponiveis
+    /**
+     * Retorna as direções que possuem uma saída para um outro ambiente.
+     *
+     * @return uma String com as direções disponíveis, ou uma String vazia
+     *         se este ambiente não tiver saídas
      */
     public String getSaidas() {
         String saidasDisponiveis = "";
@@ -47,17 +50,19 @@ public class Ambiente {
     }
 
     /**
-     * @return O ambiente atual
+     * @param direcao direcao da saida que quer consultar
+     * @return ambiente vizinho associado à direção informada no metodo, caso não haja saida, retorna null
      */
     public Ambiente getAmbiente(String direcao) {
         return saidas.get(direcao);
     }
 
     /**
-     * Ajusta o ambiente fazendo o seguinte: no ambiente em que você está, pode definir qual ambiente está nas direções.
-     * Ex: você esta no ambienteA e quer que ao norte esteja o ambienteB, então faz o seguinte no metodo criarAmbientes() da classe Jogo: ambienteA.ajustarSaidas("norte", ambienteB).
+     * Associa uma direção a um ambiente vizinho.
+     *
+     * @param direcao  direção em que o ambiente vizinho será acessado
+     * @param ambiente ambiente conectado nessa direção
      */
-
     public void ajustarSaidas(String direcao, Ambiente ambiente) {
         saidas.put(direcao, ambiente);
     }
