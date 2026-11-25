@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 /**
  *
  * @author Luiz Merschmann
@@ -17,16 +18,15 @@ public class Principal {
         referencias.put("Área de Serviço", new Posicao(16, 14));
         referencias.put("Corredor", new Posicao(9, 6));
         Simulacao sim = new Simulacao();
-        
-        
-        for(String origem: referencias.keySet()){
-            for(String destino: referencias.keySet()){
-                if(!origem.equals(destino)){
+
+        for (String origem : referencias.keySet()) {
+            for (String destino : referencias.keySet()) {
+                if (!origem.equals(destino)) {
                     System.out.println("Origem: " + origem + "\tDestino: " + destino);
                     System.out.println("Procurando o caminho ...");
-                    sim.executarSimulacao(referencias.get(origem),referencias.get(destino));
+                    sim.executarSimulacao(referencias.get(origem), referencias.get(destino));
                 }
-            }    
+            }
         }
         System.out.println("Simulação concluída.");
 

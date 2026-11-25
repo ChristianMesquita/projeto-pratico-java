@@ -1,8 +1,11 @@
+
+import java.util.HashMap;
+
 /**
  * Classe Ambiente - um ambiente em um jogo adventure.
  *
  * Esta classe eh parte da aplicacao "World of Zuul".
- * "World of Zuul" eh um jogo de aventura muito simples, baseado em texto.  
+ * "World of Zuul" eh um jogo de aventura muito simples, baseado em texto.
  *
  * Um "Ambiente" representa uma localizacao no cenario do jogo. Ele eh
  * conectado aos outros ambientes atraves de saidas. As saidas sao
@@ -10,16 +13,12 @@
  * guarda uma referencia para o ambiente vizinho, ou null se nao ha
  * saida naquela direcao.
  * 
- * @author  Michael Kölling and David J. Barnes (traduzido por Julio Cesar Alves)
+ * @author Michael Kölling and David J. Barnes (traduzido por Julio Cesar Alves)
  * @version 2011.07.31 (2016.02.01)
  */
-public class Ambiente 
-{
-    public String descricao;
-    public Ambiente saidaNorte;
-    public Ambiente saidaSul;
-    public Ambiente saidaLeste;
-    public Ambiente saidaOeste;
+public class Ambiente {
+    private String descricao;
+    private HashMap<String, Ambiente> saidas;
 
     /**
      * Cria um ambiente com a "descricao" passada. Inicialmente, ele
@@ -28,38 +27,45 @@ public class Ambiente
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "um jardim aberto".
+     * 
      * @param descricao A descricao do ambiente.
      */
-    public Ambiente(String descricao) 
-    {
+    public Ambiente(String descricao) {
         this.descricao = descricao;
     }
 
-    /**
-     * Define as saidas do ambiente. Cada direcao ou leva a um
-     * outro ambiente ou eh null (nenhuma saida para la).
-     * @param norte A saida norte.
-     * @param leste A saida leste.
-     * @param sul A saida sul.
-     * @param oeste A saida oeste.
+    /*
+     * Vai percorrer o HashMap e so vai pegar as direções(norte, sul, leste, oeste)
+     * e depois vai concatenar na variavel saidasDisponiveis
      */
-    public void ajustarSaidas(Ambiente norte, Ambiente leste, Ambiente sul, Ambiente oeste) 
-    {
-        if(norte != null)
-            saidaNorte = norte;
-        if(leste != null)
-            saidaLeste = leste;
-        if(sul != null)
-            saidaSul = sul;
-        if(oeste != null)
-            saidaOeste = oeste;
+    public String getSaidas() {
+        String saidasDisponiveis = "";
+        for (String direcao : saidas.keySet()) {
+            saidasDisponiveis += direcao + " ";
+        }
+        return saidasDisponiveis;
+    }
+
+    /**
+     * @return O ambiente atual
+     */
+    public Ambiente getAmbiente(String direcao) {
+        return saidas.get(direcao);
+    }
+
+    /**
+     * Ajusta o ambiente fazendo o seguinte: no ambiente em que você está, pode definir qual ambiente está nas direções.
+     * Ex: você esta no ambienteA e quer que ao norte esteja o ambienteB, então faz o seguinte no metodo criarAmbientes() da classe Jogo: ambienteA.ajustarSaidas("norte", ambienteB).
+     */
+
+    public void ajustarSaidas(String direcao, Ambiente ambiente) {
+        saidas.put(direcao, ambiente);
     }
 
     /**
      * @return A descricao do ambiente.
      */
-    public String getDescricao()
-    {
+    public String getDescricao() {
         return descricao;
     }
 
