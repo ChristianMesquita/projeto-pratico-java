@@ -73,7 +73,7 @@ public class Jogo {
     /**
      * Imprime a localização em que você está e as saidas disponiveis.
      */
-    public void imprimirLocalizacaoAtual() {
+    private void imprimirLocalizacaoAtual() {
         System.out.println("Voce esta " + ambienteAtual.getDescricao());
         System.out.println("Saidas: " + ambienteAtual.getSaidas());
     }
@@ -128,7 +128,7 @@ public class Jogo {
         System.out.println("pela universidade.");
         System.out.println();
         System.out.println("Suas palavras de comando sao:");
-        System.out.println(PalavrasComando.getComandos());
+        System.out.println(analisador.getComandos());
     }
 
     /**

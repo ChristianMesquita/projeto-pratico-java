@@ -29,6 +29,10 @@ public class Analisador {
         entrada = new Scanner(System.in);
     }
 
+    public String getComandos() {
+        return palavrasDeComando.getComandos();
+    }
+
     /**
      * @return O proximo comando do usuario
      */

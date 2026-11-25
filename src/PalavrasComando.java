@@ -27,10 +27,10 @@ public class PalavrasComando {
      * 
      * @return uma string com todos os comandos disponiveis
      */
-    public static String getComandos() {
+    public String getComandos() {
         String comandos = "";
-        for (String s : comandosValidos) {
-            comandos += s + " ";
+        for (String comando : comandosValidos) {
+            comandos += comando + " ";
         }
         return comandos;
     }

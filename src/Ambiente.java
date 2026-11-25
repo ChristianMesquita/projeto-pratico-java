@@ -51,10 +51,18 @@ public class Ambiente {
 
     /**
      * @param direcao direcao da saida que quer consultar
-     * @return ambiente vizinho associado à direção informada no metodo, caso não haja saida, retorna null
+     * @return ambiente vizinho associado à direção informada no metodo, caso não
+     *         haja saida, retorna null
      */
     public Ambiente getAmbiente(String direcao) {
         return saidas.get(direcao);
+    }
+
+    /**
+     * @return A descricao do ambiente.
+     */
+    public String getDescricao() {
+        return descricao;
     }
 
     /**
@@ -66,12 +74,4 @@ public class Ambiente {
     public void ajustarSaidas(String direcao, Ambiente ambiente) {
         saidas.put(direcao, ambiente);
     }
-
-    /**
-     * @return A descricao do ambiente.
-     */
-    public String getDescricao() {
-        return descricao;
-    }
-
 }
